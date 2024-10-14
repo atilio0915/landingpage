@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.pulsar{
+    animation: pulse 2s infinite linear;
+    
+}
+.rotaco{
+    animation: rotate 7s  infinite linear;
+    transform-origin: center;
+}
+@keyframes pulse{
+    0%, 100% {
+       transform: scale(1);
+    }
+    50%{
+        transform: scale(0.7);
+    }
+}
+@keyframes rotate {
+    from{
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+}
+.blurbg {
+    filter: blur(3px);
+
+}
+@media (max-width: 390px){
+    
+}
