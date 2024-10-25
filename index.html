@@ -31,10 +31,10 @@
                     <img src="./img/logoremove.png"  alt="logowizard" class="h-full w-full  object-contain">
                 </div>
                 <ul class="flex space-x-24 max-390:space-x-4 list-none text-zinc-500  max-390:mr-5 mr-24">
-                    <li class="font-cinzel">Home</li>
-                    <li class="font-cinzel">Sinopsis</li>
-                    <li class="font-cinzel">Cast</li>
-                    <li class="font-cinzel">Tickets</li>
+                    <li class="font-cinzel hover:text-zinc-400 ">Home</li>
+                    <li class="font-cinzel hover:text-zinc-400">Sinopsis</li>
+                    <li class="font-cinzel hover:text-zinc-400">Cast</li>
+                    <li class="font-cinzel hover:text-zinc-400">Tickets</li>
                 </ul>
             </nav>
         </div>
@@ -113,21 +113,26 @@
       <div class="w-[50%] h-[100%] relative max-390:w-[100%] max-390:h-[50%]">
         <img src="./img/becojanela.jpg" alt="fundodementador" class=" w-full h-full opacity-35 max-390:h-[100%]">
         
-        <div id="griddeimg" class=" max-390:top-5 grid grid-cols-2 grid-rows-[30px,1fr,1fr,1fr] gap-x-8 gap-y-3 w-[70%] absolute top-2 translate-x-20 ">
-           <h1 class=" col-span-2 text-white text-2xl  text-center font-cinzel  ">Personagens</h1>
-           <img src="./img/lupin.jpg" alt="" class="h-36 w-[90%] max-390:h-24 border border-3 border-zinc-950" data-numero="0"> 
-           <img src="./img/dobby.jpg" alt="" class="h-36  w-[90%] max-390:h-24 border border-3 border-zinc-950" data-numero="1">
-           <img src="./img/ernesto.jpg" alt="" class="h-36 w-[90%] max-390:h-24 border border-3 border-zinc-950" data-numero="2">
-           <img src="./img/sirius.jpg" alt="" class="h-36 w-[90%] max-390:h-24 border border-3 border-zinc-950" data-numero="3">
-           <img src="./img/severus.jpg" alt="" class="h-36 w-[90%] max-390:h-24 border border-3 border-zinc-950" data-numero="4">
-           <img src="./img/lupin.jpg" alt="" class="h-36 w-[90%] max-390:h-24 border border-3 border-zinc-950" data-numero="5">
+        <div id="griddeimg" class=" max-390:top-5 grid grid-cols-2 grid-rows-[30px,1fr,1fr,1fr] gap-x-8 gap-y-3 w-[70%] absolute top-6 translate-x-20 ">
+           <h1 class=" col-span-2 text-white text-2xl  text-center font-cinzel">Personagens</h1>
+           <img src="./img/lupinpla.png" alt="" class=" pulsar h-44 w-[90%] max-390:h-24  " data-numero="0"> 
+           <img src="./img/dobbypla.png" alt="" class="pulsar h-44  w-[90%] max-390:h-24  " data-numero="1">
+           <img src="./img/Ernestopla.png" alt="" class="pulsar h-44 w-[90%] max-390:h-24  border-zinc-950" data-numero="2">
+           <img src="./img/siriuspla-removebg-preview.png" alt="" class="pulsar h-44 w-[90%] max-390:h-24 " data-numero="3">
+           <img src="./img/severopla.png" alt="" class="pulsar h-44 w-[90%] max-390:h-24  " data-numero="4">
+           <img src="./img/dementadorpla.png" alt="" class="pulsar h-44 w-[90%] max-390:h-24  " data-numero="5">
         </div>
-        </div>
+      </div>
 
       
-      <div class=" flex relative w-[50%] h-[100%] max-390:w-[100%] max-390:h-[50%] ">
-      <img src="./img/askaban.jpg" alt="" class="h-[60%] w-[330px] absolute top-36 right-36 max-390:top-20 max-390:right-20 max-390:w-[220px] " id="imgmoldura" >
-      <img src="./img/moldura-removebg-preview.png" alt="" class="h-[90%] w-[80%] m-10 absolute top-3 right-2 max-390:top-2 max-390:m-2 max-390:left-8 "></img>
+      <div class=" flex relative w-[50%] h-[100%] max-390:w-[100%] max-390:h-[50%] items-start justify-center ">
+      <img src="./img/askaban.jpg" alt="" class=" absolute mt-[96px] h-[33%] w-[32%]  max-390:top-20 max-390:right-20 max-390:w-[220px] z-0 " id="imgmoldura" >
+      <img src="./img/moldura-removebg-preview.png" alt="" class=" absolute h-[50%] w-[50%] m-10   max-390:top-2 max-390:m-2 max-390:left-8 z-30"></img>
+      
+       <div class="top-[350px] w-full justify-center flex relative h-[300px] ">
+        <img id="pergaminho" src="./img/pergaminho.png" alt="pergaminho" class=" scroll absolute w-[100%] h-[100%] z-10 ">
+        <p id="historia" class=" absolute mt-[60px] w-[60%] h-[50%] text-zinc-950 text-sm z-50 font-cinzel ">  </p>
+       </div>
       </div>
 
     </div>
@@ -135,7 +140,7 @@
 
    <!--tag audio de fundo -->
    <audio autoplay loop >
-        <source src="./audio/audio.mp3" type="audio/mpeg">
+        <source src="./audio/audiomp3" type="audio/mpeg">
    </audio>
 </body>
 
@@ -159,7 +164,7 @@ div.addEventListener('mouseleave', () => {
 
 const texto = [
 "Remus Lupin, um amigo leal, sempre esteve ao lado de Harry e seus colegas, ensinando-os sobre coragem e aceitação. Sua luta interna com a licantropia reflete a complexidade das batalhas que todos enfrentamos.",
-"<img src='./img/lupin.jpg' class='h-40 w-[90%] border-3 border-zinc-950'>",
+"<img  src='./img/lupin.jpg' class='h-[100%] w-[50%] border-3 border-zinc-950'>",
 "Gentil e compreensivo, Lupin era um farol de esperança em tempos sombrios. Sua amizade e sabedoria eram um consolo inestimável para aqueles ao seu redor.",
 "Remus Lupin é um símbolo de resiliência, lutando contra as adversidades com graça e dignidade. Sua história nos ensina a importância da aceitação e da amizade verdadeira.",
  ];
@@ -194,18 +199,45 @@ const texto = [
     "./img/dementador2.jpg ",
  ] 
 
+ const historiaarray = [
+    "Remus Lupin é um bruxo bondoso e humilde, marcado pela maldição de ser um lobisomem. ",    
+    "Dobby é um elfo doméstico leal e corajoso, que inicialmente servia a família Malfoy.Ele se destacou por sua vontade inabalável de proteger Harry Potter, mesmo quando isso significava desobedecer ordens diretas de seus mestres.",
+    "Ernesto Prang é o motorista excêntrico do Nôitibus, o ônibus mágico que transporta bruxos e bruxas em necessidade. Ele é descrito como um homem idoso e de visão não muito confiável, o que, junto com a velocidade vertiginosa do ônibus, torna as viagens no Nôitibus uma experiência bastante emocionante e caótica. ",
+    "Sirius Black é um dos personagens mais enigmáticos e trágicos do universo de Harry Potter. Nascido em uma família de sangue puro, ele rejeitou as tradições elitistas dos Black e se rebelou contra suas crenças.",
+    "Severo Snape é um dos personagens mais complexos da saga Harry Potter. Como professor de Poções em Hogwarts, ele era temido por muitos estudantes por sua severidade e favoritismo com os alunos da Sonserina.",
+    "Os Dementadores são criaturas sombrias e aterrorizantes, que vagam pelos recantos mais sombrios do mundo mágico, sugando toda a felicidade de suas vítimas.",
+ ]
+
  let indeximg = 0;
+
+//texto começar com a mesma referencia da imagem
+ const historiaa = document.getElementById('historia');
+ historiaa.textContent = historiaarray[3];
+//end
 
  imagens.forEach((element) => {
     element.addEventListener('click', () => {
-        const indeximg = element.getAttribute('data-numero');
+        indeximg = element.getAttribute('data-numero');
         const imgmol = document.getElementById('imgmoldura');
         imgmol.src = gifs[indeximg]
+        atualizarhistoria();
+        animacaopergaminho();
     })
-    
-
+      
  });
 
+ function atualizarhistoria(){
+    const historiaa = document.getElementById('historia');
+    historiaa.textContent = historiaarray[indeximg];
+    }
+
+ function animacaopergaminho(){   
+ const pergaminho = document.getElementById('pergaminho');
+ setTimeout(() => {
+    pergaminho.classList.remove('open')
+ },15000)
+ pergaminho.classList.add('open')
+ }
  
 </script>
 </html>

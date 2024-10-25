@@ -8,6 +8,8 @@
     margin: 0;
     padding: 0;
 }
+
+
 html,body{
     height: 100%;
     width: 100%;
@@ -44,4 +46,25 @@ html,body{
 }
 @media (max-width: 390px){
     
+}
+
+.scroll{
+    clip-path: inset(0 82% 0 0);
+    transition: clip-path 2s ease-in-out;
+    z-index: 35;
+}
+
+.scroll.open{
+    clip-path: inset(0 0 0 0 );
+}
+@keyframes pulsar{
+    0%,100%{
+       transform: scale(1);
+    }
+    50%{
+       transform: scale(1.1);
+    }
+}
+.pulsar{
+    animation: pulsar 2s infinite linear;
 }
