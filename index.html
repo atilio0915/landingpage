@@ -32,9 +32,9 @@
                 </div>
                 <ul class="flex space-x-24 max-390:space-x-4 list-none text-zinc-500  max-390:mr-5 mr-24">
                     <li class="font-cinzel hover:text-zinc-400 ">Home</li>
-                    <li class="font-cinzel hover:text-zinc-400">Sinopsis</li>
-                    <li class="font-cinzel hover:text-zinc-400">Cast</li>
-                    <li class="font-cinzel hover:text-zinc-400">Tickets</li>
+                    <li onclick="window.location.href='formulario.html'" class="font-cinzel hover:text-zinc-400 personagem" style="cursor: pointer">Personagens</li>
+                    <li class="font-cinzel hover:text-zinc-400">Elenco</li>
+                    <li class="font-cinzel hover:text-zinc-400">Ingresso</li>
                 </ul>
             </nav>
         </div>
@@ -106,7 +106,7 @@
       </div>
   </section>
   <!-- 3 tela dos artistas --> 
-   <section class=" h-[100vh] w-screen flex  bg-black max-390:h-[100vh] ">
+   <section id="sectionpersonagem" class=" h-[100vh] w-screen flex  bg-black max-390:h-[100vh] ">
 
     <div class=" flex h-full w-full max-390:flex-col">
      <!--div dos atores-->
@@ -238,6 +238,11 @@ const texto = [
  },15000)
  pergaminho.classList.add('open')
  }
+
+ document.querySelector('.personagem').addEventListener('click', () => {
+    const sectionpersonagem = document.getElementById('sectionpersonagem');
+    sectionpersonagem.scrollIntoView({behavior:"smooth"})
+ })
  
 </script>
 </html>

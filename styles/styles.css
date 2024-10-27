@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&display=swap');
 
 *{
     margin: 0;
@@ -67,4 +67,10 @@ html,body{
 }
 .pulsar{
     animation: pulsar 2s infinite linear;
+}
+.fonte{
+    font-family: "Cinzel Decorative", serif;
+}
+.gradiantecustom{
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.0)30% , black 75%);
 }
