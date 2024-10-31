@@ -53,10 +53,10 @@
              <label for="hora" class="text-xl text-center border-b-4 border-amber-900 font-bold text-white fonte" >Escolha a hora</label> 
              
              <select class="rounded-lg bg-[rgba(255,255,255,0.5)]" name="hora">
-                <option value="">13:00</option>
-                <option value="">16:00</option>
-                <option value="">18:00</option>
-                <option value="">20:00</option>
+                <option value="13:00">13:00</option>
+                <option value="16:00">16:00</option>
+                <option value="18:00">18:00</option>
+                <option value="20:00">20:00</option>
              </select>
             </div>
 
@@ -97,11 +97,16 @@
         
         // Cria um FormData a partir do formulário
         const formData = new FormData(form);
-      
+
+        const dados = Object.fromEntries(formData.entries());
+
         // Envia os dados usando fetch
         fetch("http://127.0.0.1:5500/submit", {
           method: "POST",
-          body: formData
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dados)
         })
         .then(response => {
             if (!response.ok) {
