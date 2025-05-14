@@ -1,127 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulario</title>
     <link rel="stylesheet" href="./styles/output.css" />
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!--font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="h-[100vh]">
+    <div class="relative h-screen w-full bg-black justify-center flex flex-col">
+      <div
+        class="bg-[url('../img.formulario/capa.jpg')] shadow-stone-400 shadow-lg rounded-xl ml-12 top-10 bg-cover bg-center absolute gap-3 z-30 flex flex-col h-[500px] w-[330px]"
+      >
+        <span class="mt-80 z-20 ml-5">
+          <i class="fa-solid fa-star text-yellow-600"></i>
+          <i class="fa-solid fa-star text-yellow-600"></i>
+          <i class="fa-solid fa-star text-yellow-600"></i>
+          <i class="fa-solid fa-star text-yellow-600"></i>
+          <i class="fa-regular fa-star text-yellow-600"></i>
+        </span>
+        <h1 class="text-orange-700 font-cinzel ml-5 z-20">
+          Titulo<span class="text-white font-cinzel ml-3 z-20">
+            O prizoneiro de askaban</span
+          >
+        </h1>
+        <h2 class="text-orange-700 font-cinzel ml-5 z-20">
+          Duração<span class="text-white font-cinzel ml-3 z-20"> 2h 46min</span>
+        </h2>
+        <h3 class="text-orange-700 font-cinzel ml-5 z-20">
+          Tipo<span class="text-white font-cinzel ml-3 z-20">
+            Ação, Fantasia</span
+          >
+        </h3>
+        <div class="absolute inset-0 gradiantecustom rounded-lg z-10"></div>
+      </div>
 
-</head>
-<body class="h-[100vh]">
-    <div class=" relative h-screen w-full bg-black justify-center flex flex-col ">
-    
-        <div class=" bg-[url('../img.formulario/capa.jpg')] shadow-stone-400 shadow-lg  rounded-xl  ml-12 top-10 bg-cover  bg-center absolute gap-3 z-30 flex flex-col h-[500px] w-[330px]">
-          <span class="mt-80 z-20 ml-5">
-            <i class="fa-solid fa-star text-yellow-600 "></i>
-            <i class="fa-solid fa-star text-yellow-600  "></i>
-            <i class="fa-solid fa-star text-yellow-600  "></i>
-            <i class="fa-solid fa-star text-yellow-600  "></i>
-            <i class="fa-regular fa-star text-yellow-600"></i>
-          </span>   
-          <h1 class= "text-orange-700 font-cinzel  ml-5 z-20">Titulo<span class="text-white font-cinzel ml-3 z-20 ">   O prizoneiro de askaban</span></h1>
-          <h2 class="text-orange-700 font-cinzel  ml-5 z-20">Duração<span class="text-white font-cinzel ml-3 z-20 ">  2h 46min</span></h2>
-          <h3 class=" text-orange-700  font-cinzel ml-5 z-20 ">Tipo<span class="text-white  font-cinzel ml-3 z-20">    Ação, Fantasia</span></h3>
-          <div class="absolute inset-0 gradiantecustom rounded-lg z-10  "></div> 
-          
-        </div>
-    
-        <div class="absolute inset-0 bg-gradient-to-b from-[rgba(0,0,0,0.0)] via-black/10 z-20 to-black "></div>
-        <img src="./img.formulario/fundo.jpg" alt="" class="w-full h-full ">  
-     
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-[rgba(0,0,0,0.0)] via-black/10 z-20 to-black"
+      ></div>
+      <img src="./img.formulario/fundo.jpg" alt="" class="w-full h-full" />
 
-     <div class="bg-black  shadow-stone-400 shadow-lg  opacity-70 absolute w-[40%] right-[25%] h-[90%] rounded-lg sh top-10 z-40  flex justify-center   ">
-        <form action="" class="w-96 h-full flex flex-col gap-6" id="form">
-            <h1 class="text-3xl text-center mt-4 text-white fonte">INGRESSOS</h1>
-            
-            <div class="flex flex-col gap-2">
-                <label for="data" class="text-xl text-center border-b-4 border-amber-900 font-bold text-white fonte ">Escolha o dia </label>
-                <select id="data" name="data" required class="rounded-lg bg-[rgba(255,255,255,0.5)]" name="dia" >
-                    <option value="2024-10-25">25 de Outubro, 2024</option>
-                    <option value="2024-10-26">26 de Outubro, 2024</option>
-                    <option value="2024-10-27">27 de Outubro, 2024</option>
-                  </select>
-            </div>
-            
-            <div class="flex flex-col gap-2">
-             <label for="hora" class="text-xl text-center border-b-4 border-amber-900 font-bold text-white fonte" >Escolha a hora</label> 
-             
-             <select class="rounded-lg bg-[rgba(255,255,255,0.5)]" name="hora">
-                <option value="13:00">13:00</option>
-                <option value="16:00">16:00</option>
-                <option value="18:00">18:00</option>
-                <option value="20:00">20:00</option>
-             </select>
-            </div>
+      <div
+        class="bg-black shadow-stone-400 shadow-lg opacity-70 absolute right-[30%] rounded-lg top-10 z-40 flex justify-center"
+      >
+        <form action="" class="w-96 h-full flex flex-col gap-6 m-10 " id="form">
+          <h1 class="text-3xl text-center mt-4 text-white fonte">INGRESSOS</h1>
 
-            <div class="flex flex-col gap-2">
-              <h1 class="text-xl text-center border-b-4 border-amber-900 font-bold text-white fonte">Ingresso Inteira </h1>
-              <label for="inteira">
-              <span class="font-semibold text-white fonte">Quantidade: </span>  
-              <input type="number" class="w-10 focus:outline-none focus:ring-0 rounded-lg bg-[rgba(255,255,255,0.5)]" name="quantidadeinteira">
-              <div class="text-white fonte"> <span class="font-semibold text-white fonte ">Ingresso:</span> R$18,00 + Serviço: RS2,16</div>
-              </label>
-            </div>
+          <div class="flex flex-col gap-2">
+            <label
+              for="data"
+              class="text-xl text-center border-b-4 border-amber-900 font-bold text-white fonte"
+              >Escolha o dia
+            </label>
+            <select
+              id="data"
+              name="data"
+              required
+              class="rounded-lg bg-[rgba(255,255,255,0.5)]"
+              name="dia"
+            >
+              <option value="2024-10-25">25 de Outubro, 2024</option>
+              <option value="2024-10-26">26 de Outubro, 2024</option>
+              <option value="2024-10-27">27 de Outubro, 2024</option>
+            </select>
+          </div>
 
-            <div class="flex flex-col gap-2">
-                <h1 class= "text-xl text-center border-b-4 border-amber-900 font-bold text-white fonte">Ingresso meia</h1>
-                <label for="meia flex ">   
-                <span class="font-semibold text-white fonte">Quantidade: </span>    
-                <input type="number" class="w-10  font-bold focus:outline-none focus:ring-0 rounded-lg bg-[rgba(255,255,255,0.5)]" name="quantidademeia">
-                </label>
-                <div class="text-white fonte"> <span class="font-semibold text-white fonte">Ingresso:</span> R$18,00 + Serviço: RS2,16</div>
-            </div>
+          <div class="flex flex-col gap-2">
+            <label
+              for="hora"
+              class="text-xl text-center border-b-4 border-amber-900 font-bold text-white fonte"
+              >Escolha a hora</label
+            >
 
-            <div class="w-full h-[40px] gap-2 ">
-                <h1 class="text-xl text-center border-b-2 border-amber-900 font-bold text-white fonte  ">Subtotal</h1>
-                <p class="text-white fonte">R$0,00</p>
+            <select class="rounded-lg bg-[rgba(255,255,255,0.5)]" name="hora">
+              <option value="13:00">13:00</option>
+              <option value="16:00">16:00</option>
+              <option value="18:00">18:00</option>
+              <option value="20:00">20:00</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <h1
+              class="text-xl text-center border-b-4 border-amber-900 font-bold text-white fonte"
+            >
+              Ingresso Inteira
+            </h1>
+            <label for="inteira">
+              <span class="font-semibold text-white fonte">Quantidade: </span>
+              <input
+                type="number"
+                class="w-10 focus:outline-none focus:ring-0 rounded-lg bg-[rgba(255,255,255,0.5)]"
+                name="quantidadeinteira"
+                id="quantidadeinteira"
+                value="0"
+                min="0"
+              />
+              <div class="text-white fonte">
+                <span class="font-semibold text-white fonte">Ingresso:</span>
+                R$36,00 + Serviço: RS2,16
+              </div>
+            </label>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <h1
+              class="text-xl text-center border-b-4 border-amber-900 font-bold text-white fonte"
+            >
+              Ingresso meia
+            </h1>
+            <label for="meia flex ">
+              <span class="font-semibold text-white fonte">Quantidade: </span>
+              <input
+                type="number"
+                class="w-10 font-bold focus:outline-none focus:ring-0 rounded-lg bg-[rgba(255,255,255,0.5)]"
+                name="quantidademeia"
+                id="quantidademeia"
+                value="0"
+                min="0"
+              />
+            </label>
+            <div class="text-white fonte">
+              <span class="font-semibold text-white fonte">Ingresso:</span>
+              R$18,00 + Serviço: RS2,16
             </div>
-            
-            <button type="submit" class="text-xl text-center text-white bg-orange-900 rounded-lg hover:bg-orange-950 fonte">Finalizar</button>
+          </div>
+
+          <div class="w-full h-[40px] gap-2">
+            <h1
+              class="text-xl text-center border-b-2 border-amber-900 font-bold text-white fonte"
+            >
+              Subtotal
+            </h1>
+            <textarea
+              id="preco"
+              class="text-white fonte bg-transparent"
+              value="0"
+              name="preco"
+            >
+ R$ 0,00 </textarea
+            >
+          </div>
+
+          <button
+            type="submit"
+            class="text-xl text-center text-white bg-orange-900 rounded-lg hover:bg-orange-950 fonte"
+          >
+            Finalizar
+          </button>
         </form>
-     </div>
+      </div>
     </div>
 
     <script>
-      const form = document.getElementById('form');
-      
+      // toda vez q mudar a quantidade deve mudar o valor final
+
+      const quantidadeinteira = document.getElementById("quantidadeinteira");
+      const quantidademeia = document.getElementById("quantidademeia");
+      const preco = document.getElementById("preco");
+      quantidadeinteira.addEventListener("input", definirpreco);
+      quantidademeia.addEventListener("input", definirpreco);
+
+      function definirpreco() {
+        const qtdint = parseInt(quantidadeinteira.value) || 0;
+        const qtdmeia = parseInt(quantidademeia.value) || 0;
+
+        const valorservico = 2.16;
+        let valor1 = 0;
+        let valor2 = 0;
+
+        if (qtdint > 0) {
+          valor1 = qtdint * 36.0 + valorservico; // Calcula o valor se a quantidade for maior que zero
+        }
+
+        if (qtdmeia > 0) {
+          valor2 = qtdmeia * 18.0 + valorservico; // Calcula o valor se a quantidade for maior que zero
+        }
+        let valortotal = valor1 + valor2;
+        preco.value = `R$ ${valortotal.toFixed(2)}`;
+      }
+
+      const form = document.getElementById("form");
+
       // pega o evento de submit
-      form.addEventListener('submit', function(event) {
+      form.addEventListener("submit", function (event) {
         event.preventDefault(); // previne ação padrão do formulário
-        
+
         // Cria um FormData a partir do formulário
         const formData = new FormData(form);
 
         const dados = Object.fromEntries(formData.entries());
 
-        // Envia os dados usando fetch
-        fetch("http://127.0.0.1:5500/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(dados)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro na requisição');
-            }
-            return response.json(); 
-       })
-       .then(data => {
-       console.log(data); 
-       })
-       .catch(error => {
-       console.error('Erro:', error);
-       });
-        })
+        localStorage.setItem("dia", dados.dia);
+        localStorage.setItem("hora", dados.hora);
+        localStorage.setItem("quantidadeinteira", dados.quantidadeinteira);
+        localStorage.setItem("quantidademeia", dados.quantidademeia);
+        localStorage.setItem("preco", dados.preco);
+
+        window.location.href = "cadeiras.html";
+      });
     </script>
-    
-</body>
+  </body>
 </html>
