@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pagamento do Ingresso</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-black flex justify-center items-center min-h-screen font-cinzel">
+
+  <div class="bg-orange-950 text-white w-[400px] rounded-3xl p-6 space-y-4 shadow-lg">
+
+    <h1 class="text-2xl font-bold text-center border-b pb-2">🎟️ Ingresso de Cinema</h1>
+
+    <div class="space-y-2 text-sm">
+      <p><strong>Dia:</strong> <span id="dia"></span></p>
+      <p><strong>Hora:</strong> <span id="hora"></span></p>
+      <p><strong>Assentos:</strong> <span id="assentos"></span></p>
+      <p><strong>Inteira:</strong> <span id="inteira"></span></p>
+      <p><strong>Meia:</strong> <span id="meia"></span></p>
+      <p class="text-lg mt-2"><strong>Total:</strong> R$ <span id="preco"></span></p>
+    </div>
+
+    <button onclick="pagar()"
+      class="w-full mt-4 bg-red-800 hover:bg-red-600 py-2 rounded-2xl font-bold">
+      💳 Pagar ingresso
+    </button>
+
+  </div>
+
+  <script>
+    // 🔹 Recuperar dados do localStorage
+    const dia = localStorage.getItem("dia");
+    const hora = localStorage.getItem("hora");
+    const inteira = localStorage.getItem("quantidadeinteira");
+    const meia = localStorage.getItem("quantidademeia");
+    const preco = localStorage.getItem("preco");
+    const ingressoId = localStorage.getItem("ingressoId");
+    const assentos = JSON.parse(localStorage.getItem("assento") || "[]");
+
+    // 🔹 Mostrar na tela
+    document.getElementById("dia").textContent = dia;
+    document.getElementById("hora").textContent = hora;
+    document.getElementById("inteira").textContent = inteira;
+    document.getElementById("meia").textContent = meia;
+    document.getElementById("preco").textContent = Number(preco).toFixed(2);
+    document.getElementById("assentos").textContent = assentos.join(", ");
+
+    // 🔹 Botão pagar
+    async function pagar() {
+      try {
+        const response = await fetch("http://127.0.0.1:3000/criar-preference", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ingresso_id: ingressoId,
+            titulo: "Ingresso de Cinema",
+            preco: preco
+          })
+        });
+
+        const data = await response.json();
+        window.location.href = data.init_point;
+
+      } catch (error) {
+        console.error(error);
+        alert("Erro ao iniciar pagamento");
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+

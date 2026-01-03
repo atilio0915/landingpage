@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pagamento</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black flex justify-center items-center min-h-screen">
+
+  <div class="bg-orange-950 text-white w-[420px] rounded-3xl p-6 text-center space-y-4">
+
+    <h1 id="titulo" class="text-2xl font-bold border-b pb-2">
+      ⏳ Confirmando pagamento
+    </h1>
+
+    <p id="mensagem" class="text-lg">
+      Aguarde enquanto validamos seu pagamento...
+    </p>
+
+    <div id="acoes" class="hidden mt-4">
+      <a
+        id="download"
+        href="#"
+        class="inline-block bg-white text-orange-950 py-2 px-6 rounded-xl font-semibold"
+      >
+        Baixar ingresso (PDF)
+      </a>
+    </div>
+
+  </div>
+
+<script>
+  const ingressoId = new URLSearchParams(window.location.search).get("external_reference");
+
+  async function verificar() {
+    const res = await fetch(`/ingresso/status?id=${ingressoId}`);
+    const data = await res.json();
+
+    if (data.pago) {
+      document.getElementById("titulo").innerText = "✅ Pagamento aprovado";
+      document.getElementById("mensagem").innerText = "Seu ingresso está disponível!";
+      document.getElementById("download").href = `/ingresso/pdf?id=${ingressoId}`;
+      document.getElementById("acoes").classList.remove("hidden");
+    }
+  }
+
+  setInterval(verificar, 3000);
+  verificar();
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadeiras</title>
+    <link rel="stylesheet" href="../../styles/output.css" />
+    <link rel="stylesheet" href="../../styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+</head>
+
+<body class="justify-center items-center flex bg-black ">
+
+    <div
+        class="flex flex-col z-0 relative justify-center items-center h-[90%] w-[50%] space-y-6 bg-orange-950  rounded-3xl border-1 shadow-slate-400 shadow-lg">
+        <h1 class="text-white font-cinzel text-2xl font-bold border-b-2 ">Escolha os assentos</h1>
+        <span class="w-[80%] font-cinzel text-white">
+            Escolha <span id="qtdingressos" class="font-extrabold text-2xl text-red-500  "></span> poltrona(s)
+        </span>
+        <span class="w-[80%] font-cinzel text-white">
+            Selecione seu(s) lugar(es) clicando na(s) poltrona(s) de acordo com a legenda.
+            Para desmarcar seu(s) lugar(es) clique novamente sobre a(s) poltrona(s) reservada(s)
+        </span>
+
+        <div class="flex w-[100%] h-72 justify-center gap-2 ">
+            <div id="fileira" class="flex flex-col p-4 items-center mt-7 space-y-5  h-full  w-[30%] "></div>
+            <div class="w-[70%] h-72  ">
+                <h1 class="bg-red-800 w-[95%]  rounded-3xl h-[10%] text-white text-center">TELA</h1>
+                <div id="assentos" class="grid p-4  grid-cols-10 gap-2 w-[100%] h-[90%] "></div>
+            </div>
+        </div>
+
+        <button id="continuar"
+            class=" w-[40%]  rounded-3xl bg-red-800  hover:bg-red-600 text-white rounded-sm font-cinzel font-bold">continuar</button>
+    </div>
+
+
+    <script>
+        const divAssentos = document.getElementById("assentos");
+        const fileira = document.getElementById("fileira");
+
+        const letrafileira = ["A", "B", "C", "D", "E"];
+        let selecoes = 0;
+        let arrayselecoes = [];
+
+        const quantidadeinteira = parseInt(localStorage.getItem("quantidadeinteira")) || 0;
+        const quantidademeia = parseInt(localStorage.getItem("quantidademeia")) || 0;
+
+        const qtdingressostotal = quantidadeinteira + quantidademeia;
+        const selecoeslimite = qtdingressostotal;
+
+        document.getElementById("qtdingressos").textContent = qtdingressostotal;
+
+        // Criar assentos
+        for (let i = 0; i < 50; i++) {
+            const chair = document.createElement("div");
+
+            chair.className =
+                "hover:bg-green-500 bg-gray-300 text-center py-1 h-8 w-8 rounded-full cursor-pointer";
+
+            const letra = letrafileira[Math.floor(i / 10)];
+            const cadeira = i + 1;
+
+            chair.textContent = `${letra}${cadeira}`;
+            chair.id = `${letra}${cadeira}`;
+
+            chair.addEventListener("click", () => {
+                if (chair.classList.contains("bg-green-300")) {
+                    chair.classList.remove("bg-green-300");
+                    chair.classList.add("bg-gray-300");
+                    arrayselecoes = arrayselecoes.filter(id => id !== chair.id);
+                    selecoes--;
+                } else {
+                    if (selecoes < selecoeslimite) {
+                        chair.classList.remove("bg-gray-300");
+                        chair.classList.add("bg-green-300");
+                        arrayselecoes.push(chair.id);
+                        selecoes++;
+                    } else {
+                        alert("Você não pode escolher mais assentos");
+                    }
+                }
+            });
+
+            divAssentos.appendChild(chair);
+        }
+
+        // Criar fileiras
+        letrafileira.forEach(l => {
+            const linha = document.createElement("div");
+            linha.className = "bg-gray-300 text-center h-7 w-8 rounded-sm";
+            linha.textContent = l;
+            fileira.appendChild(linha);
+        });
+
+        // Botão continuar
+        document.getElementById("continuar").addEventListener("click", async () => {
+            if (arrayselecoes.length !== selecoeslimite) {
+                alert("Selecione todos os assentos antes de continuar");
+                return;
+            }
+
+            const dados = {
+                dia: localStorage.getItem("dia"),
+                hora: localStorage.getItem("hora"),
+                quantidadeinteira,
+                quantidademeia,
+                preco: parseFloat(localStorage.getItem("preco")) || 0,
+                assento: JSON.stringify(arrayselecoes)
+            };
+
+            try {
+                const response = await fetch("http://127.0.0.1:3000/submit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(dados)
+                });
+
+                const data = await response.json();
+                localStorage.setItem("assento", JSON.stringify(arrayselecoes));
+                localStorage.setItem("ingressoId", data.ingresso.id);
+                window.location.href = "pagamentoo.html";
+            } catch (err) {
+                console.error(err);
+                alert("Erro ao salvar ingresso");
+            }
+        });
+    </script>
+
+    </script>
+</body>
+
+</html>
+
