@@ -11,15 +11,11 @@ import { MercadoPagoConfig, Preference, Payment } from "mercadopago";
 import PDFDocument from "pdfkit";
 import QRCode from "qrcode";
 
-// =======================
-// __dirname (ES MODULE)
-// =======================
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// =======================
-// MERCADO PAGO CONFIG
-// =======================
+
 const mpClient = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN
 });
@@ -27,20 +23,16 @@ const mpClient = new MercadoPagoConfig({
 const preferenceClient = new Preference(mpClient);
 const paymentClient = new Payment(mpClient);
 
-// =======================
-// EXPRESS CONFIG
-// =======================
+
 const app = express();
 const port = process.env.PORT;
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "..", "public")));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // webhook MP
 
-// =======================
-// POSTGRES CONFIG
-// =======================
+
 const pool = new Pool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -49,14 +41,12 @@ const pool = new Pool({
   port: Number(process.env.DB_PORT || 5432)
 });
 
-// Testar conexao
+
 pool.connect()
   .then(() => console.log("OK. PostgreSQL conectado"))
   .catch(err => console.error("Erro PostgreSQL:", err));
 
-// =======================
-// CRIAR INGRESSO
-// =======================
+
 app.post("/submit", async (req, res) => {
   const {
     dia,
@@ -71,6 +61,10 @@ app.post("/submit", async (req, res) => {
     const quantidadeInteiraNum = Number(quantidadeinteira || 0);
     const quantidadeMeiaNum = Number(quantidademeia || 0);
     const precoNum = Number(preco || 0);
+
+    if (!dia || !hora) {
+      return res.status(400).json({ error: "Dia e hora sao obrigatorios" });
+    }
 
     if (
       Number.isNaN(quantidadeInteiraNum) ||
@@ -100,9 +94,7 @@ app.post("/submit", async (req, res) => {
   }
 });
 
-// =======================
-// CRIAR PAGAMENTO
-// =======================
+
 app.post("/criar-preference", async (req, res) => {
   try {
     const { ingresso_id, titulo, preco } = req.body;
@@ -135,9 +127,7 @@ app.post("/criar-preference", async (req, res) => {
   }
 });
 
-// =======================
-// WEBHOOK MERCADO PAGO
-// =======================
+
 app.post("/webhook", async (req, res) => {
   try {
     const paymentId = req.body?.data?.id;
@@ -166,9 +156,7 @@ app.post("/webhook", async (req, res) => {
   }
 });
 
-// =======================
-// STATUS INGRESSO
-// =======================
+
 app.get("/ingresso/status", async (req, res) => {
   const { id } = req.query;
 
@@ -180,9 +168,7 @@ app.get("/ingresso/status", async (req, res) => {
   res.json({ pago: result.rows[0]?.pago });
 });
 
-// =======================
-// PDF INGRESSO
-// =======================
+
 app.get("/ingresso/pdf", async (req, res) => {
   const { id } = req.query;
 
@@ -218,9 +204,7 @@ app.get("/ingresso/pdf", async (req, res) => {
   doc.end();
 });
 
-// =======================
-// START SERVER
-// =======================
+
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });

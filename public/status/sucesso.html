@@ -10,7 +10,7 @@
   <div class="bg-orange-950 text-white w-[420px] rounded-3xl p-6 text-center space-y-4">
 
     <h1 id="titulo" class="text-2xl font-bold border-b pb-2">
-      ⏳ Confirmando pagamento
+       Confirmando pagamento
     </h1>
 
     <p id="mensagem" class="text-lg">
@@ -37,7 +37,7 @@
     const data = await res.json();
 
     if (data.pago) {
-      document.getElementById("titulo").innerText = "✅ Pagamento aprovado";
+      document.getElementById("titulo").innerText = " Pagamento aprovado";
       document.getElementById("mensagem").innerText = "Seu ingresso está disponível!";
       document.getElementById("download").href = `/ingresso/pdf?id=${ingressoId}`;
       document.getElementById("acoes").classList.remove("hidden");

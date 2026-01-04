@@ -107,9 +107,17 @@
                 return;
             }
 
+            const dia = localStorage.getItem("dia");
+            const hora = localStorage.getItem("hora");
+
+            if (!dia || !hora) {
+                alert("Escolha o dia e a hora antes de continuar");
+                return;
+            }
+
             const dados = {
-                dia: localStorage.getItem("dia"),
-                hora: localStorage.getItem("hora"),
+                dia,
+                hora,
                 quantidadeinteira,
                 quantidademeia,
                 preco: parseFloat(localStorage.getItem("preco")) || 0,
@@ -123,7 +131,24 @@
                     body: JSON.stringify(dados)
                 });
 
-                const data = await response.json();
+                let data = null;
+                try {
+                    data = await response.json();
+                } catch (parseErr) {
+                    data = null;
+                }
+
+                if (!response.ok) {
+                    const message = data?.error || `Erro ao salvar ingresso (${response.status})`;
+                    alert(message);
+                    return;
+                }
+
+                if (!data?.ingresso?.id) {
+                    alert("Resposta invalida do servidor");
+                    return;
+                }
+
                 localStorage.setItem("assento", JSON.stringify(arrayselecoes));
                 localStorage.setItem("ingressoId", data.ingresso.id);
                 window.location.href = "pagamentoo.html";

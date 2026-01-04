@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulario</title>
-    <link rel="stylesheet" href="./styles/output.css" />
-    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="../../styles/output.css" />
+    <link rel="stylesheet" href="../../styles/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -52,12 +52,16 @@
       <div
         class="absolute inset-0 bg-gradient-to-b from-[rgba(0,0,0,0.0)] via-black/10 z-20 to-black"
       ></div>
-      <img src="./img.formulario/fundo.jpg" alt="" class="w-full h-full" />
+      <img src="../../img.formulario/fundo.jpg" alt="" class="w-full h-full" />
 
       <div
         class="bg-black shadow-stone-400 shadow-lg opacity-70 absolute right-[30%] rounded-lg top-10 z-40 flex justify-center"
       >
-        <form action="" class="w-96 h-full flex flex-col gap-6 m-10 " id="form">
+        <form
+          action=""
+          class="w-96 max-w-full flex flex-col gap-4 p-6"
+          id="form"
+        >
           <h1 class="text-3xl text-center mt-4 text-white fonte">INGRESSOS</h1>
 
           <div class="flex flex-col gap-2">
@@ -67,11 +71,10 @@
               >Escolha o dia
             </label>
             <select
-              id="data"
-              name="data"
+              id="dia"
+              name="dia"
               required
               class="rounded-lg bg-[rgba(255,255,255,0.5)]"
-              name="dia"
             >
               <option value="2024-10-25">25 de Outubro, 2024</option>
               <option value="2024-10-26">26 de Outubro, 2024</option>

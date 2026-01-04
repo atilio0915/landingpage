@@ -11,7 +11,7 @@
 
   <div class="bg-orange-950 text-white w-[400px] rounded-3xl p-6 space-y-4 shadow-lg">
 
-    <h1 class="text-2xl font-bold text-center border-b pb-2">🎟️ Ingresso de Cinema</h1>
+    <h1 class="text-2xl font-bold text-center border-b pb-2"> Ingresso de Cinema</h1>
 
     <div class="space-y-2 text-sm">
       <p><strong>Dia:</strong> <span id="dia"></span></p>
@@ -24,30 +24,33 @@
 
     <button onclick="pagar()"
       class="w-full mt-4 bg-red-800 hover:bg-red-600 py-2 rounded-2xl font-bold">
-      💳 Pagar ingresso
+      Pagar ingresso
     </button>
 
   </div>
 
   <script>
-    // 🔹 Recuperar dados do localStorage
+    
     const dia = localStorage.getItem("dia");
     const hora = localStorage.getItem("hora");
     const inteira = localStorage.getItem("quantidadeinteira");
     const meia = localStorage.getItem("quantidademeia");
-    const preco = localStorage.getItem("preco");
+    const precoRaw = localStorage.getItem("preco") || "0";
+    const precoNumero = Number(
+      String(precoRaw).replace(/[^\d,.-]/g, "").replace(",", ".")
+    ) || 0;
     const ingressoId = localStorage.getItem("ingressoId");
     const assentos = JSON.parse(localStorage.getItem("assento") || "[]");
 
-    // 🔹 Mostrar na tela
+    
     document.getElementById("dia").textContent = dia;
     document.getElementById("hora").textContent = hora;
     document.getElementById("inteira").textContent = inteira;
     document.getElementById("meia").textContent = meia;
-    document.getElementById("preco").textContent = Number(preco).toFixed(2);
+    document.getElementById("preco").textContent = precoNumero.toFixed(2);
     document.getElementById("assentos").textContent = assentos.join(", ");
 
-    // 🔹 Botão pagar
+    
     async function pagar() {
       try {
         const response = await fetch("http://127.0.0.1:3000/criar-preference", {
@@ -56,11 +59,17 @@
           body: JSON.stringify({
             ingresso_id: ingressoId,
             titulo: "Ingresso de Cinema",
-            preco: preco
+            preco: precoNumero
           })
         });
 
         const data = await response.json();
+        if (!response.ok || !data?.init_point) {
+          const message = data?.error || "Erro ao iniciar pagamento";
+          alert(message);
+          return;
+        }
+
         window.location.href = data.init_point;
 
       } catch (error) {
